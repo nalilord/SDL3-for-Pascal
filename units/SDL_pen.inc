@@ -75,14 +75,14 @@ const
    *
    * \since This macro is available since SDL 3.2.0.
    *}
-  SDL_PEN_MOUSEID = TSDL_MouseID(-2);
+  SDL_PEN_MOUSEID = TSDL_MouseID($FFFFFFFE);
 
   {*
    * The SDL_TouchID for touch events simulated with pen input.
    *
    * \since This macro is available since SDL 3.2.0.
    *}
-  SDL_PEN_TOUCHID = TSDL_TouchID(-2);
+  SDL_PEN_TOUCHID = TSDL_TouchID($FFFFFFFFFFFFFFFE);
 
 {*
  * Pen input flags, as reported by various pen events' `pen_state` field.
