@@ -331,7 +331,7 @@ function SDL_TryLockRWLockForReading(rwlock: PSDL_RWLock): Boolean; cdecl;
  * \sa SDL_UnlockRWLock
  *}
 function SDL_TryLockRWLockForWriting(rwlock: PSDL_RWLock): Boolean; cdecl;
-  external SDL_LibName {$IFDEF DELPHI} {$IFDEF MACOS} name '_SDL_TryLockRWLockForReading' {$ENDIF} {$ENDIF};
+  external SDL_LibName {$IFDEF DELPHI} {$IFDEF MACOS} name '_SDL_TryLockRWLockForWriting' {$ENDIF} {$ENDIF};
 
 {**
  * Unlock the read/write lock.

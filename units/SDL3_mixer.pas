@@ -276,7 +276,7 @@ function SDL_MIXER_VERSION_ATLEAST(major, minor, micro: Integer): Boolean;
 * \sa SDL_MIXER_VERSION
  *}
 function MIX_Version(): cint; cdecl;
-  external MIX_LibName {$IFDEF DELPHI} {$IFDEF MACOS} name '_Mix_Version' {$ENDIF} {$ENDIF};
+  external MIX_LibName {$IFDEF DELPHI} {$IFDEF MACOS} name '_MIX_Version' {$ENDIF} {$ENDIF};
 
 {*
  * Initialize the SDL_mixer library.

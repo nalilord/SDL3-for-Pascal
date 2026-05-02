@@ -4866,8 +4866,8 @@ function SDL_GetHint(name: PAnsiChar): PAnsiChar; cdecl;
  * \sa SDL_GetHint
  * \sa SDL_SetHint
   }
-function SDL_GetHinBooleanean(name: PAnsiChar; default_value: Boolean): Boolean; cdecl;
-  external SDL_LibName {$IFDEF DELPHI} {$IFDEF MACOS} name '_SDL_GetHinBooleanean' {$ENDIF} {$ENDIF};
+function SDL_GetHintBoolean(name: PAnsiChar; default_value: Boolean): Boolean; cdecl;
+  external SDL_LibName {$IFDEF DELPHI} {$IFDEF MACOS} name '_SDL_GetHintBoolean' {$ENDIF} {$ENDIF};
 
 {*
  * A callback used to send notifications of hint value changes.
@@ -4930,4 +4930,3 @@ function SDL_AddHintCallback(name: PAnsiChar; callback: TSDL_HintCallback; userd
   }
 procedure SDL_RemoveHintCallback(name: PAnsiChar; callback: TSDL_HintCallback; userdata: Pointer); cdecl;
   external SDL_LibName {$IFDEF DELPHI} {$IFDEF MACOS} name '_SDL_RemoveHintCallback' {$ENDIF} {$ENDIF};
-
