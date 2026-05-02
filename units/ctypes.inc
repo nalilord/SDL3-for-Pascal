@@ -24,14 +24,25 @@
 type
   DWord = LongWord;
 
+  ppcchar = ^pcchar;
+  pcchar = ^cchar;
+  cchar = AnsiChar;
+  {$EXTERNALSYM cchar}
+
   ppcint8 = ^pcint8;
   pcint8 = ^cint8;
   cint8 = ShortInt;
   {$EXTERNALSYM cint8}
 
+  ppcuint8 = ^pcuint8;
   pcuint8 = ^cuint8;
   cuint8 = Byte;
   {$EXTERNALSYM cuint8}
+
+  ppcuchar = ^pcuchar;
+  pcuchar = ^cuchar;
+  cuchar = cuint8;
+  {$EXTERNALSYM cuchar}
 
   ppcint16 = ^pcint16;
   pcint16 = ^cint16;
@@ -58,33 +69,15 @@ type
   cuint32 = LongWord;
   {$EXTERNALSYM cuint32}
 
-  {$IFNDEF Has_Int64}
-     ppcint64 = ^pcint64;
-     pcint64 = ^cint64;
-     cint64 = record
-       hi: cuint32;
-       lo: cuint32;
-     end;
-    {$EXTERNALSYM cint64}
+  ppcint64 = ^pcint64;
+  pcint64 = ^cint64;
+  cint64 = Int64;
+  {$EXTERNALSYM cint64}
 
-    ppcuint64 = ^pcuint64;
-    pcuint64 = ^cuint64;
-    cuint64 = record
-      hi: cuint32;
-      lo: cuint32;
-    end;
-    {$EXTERNALSYM cuint64}
-  {$ELSE}
-    ppcint64 = ^pcint64;
-    pcint64 = ^cint64;
-    cint64 = Int64;
-    {$EXTERNALSYM cint64}
-
-    ppcuint64 = ^pcuint64;
-    pcuint64 = ^cuint64;
-    cuint64 = UInt64;
-    {$EXTERNALSYM cuint64}
-  {$ENDIF}
+  ppcuint64 = ^pcuint64;
+  pcuint64 = ^cuint64;
+  cuint64 = UInt64;
+  {$EXTERNALSYM cuint64}
 
   ppcsize_t = ^pcsize_t;
   pcsize_t = ^csize_t;
@@ -147,7 +140,9 @@ type
   PUInt8Array = ^TUInt8Array;
   TUInt8Array = array [0..MAXINT shr 1] of cuint8;
 
-  ppcuint8 = ^pcuint8;
+  {$IFDEF FPC}
+    ppcuint8 = ^pcuint8;
+  {$ENDIF}
 
   { "The following type designates an unsigned integer type [or signed respectivly]
     with the property that any valid pointer to void can be
@@ -156,9 +151,17 @@ type
     pointer: uintptr_t"
     Source: https://pubs.opengroup.org/onlinepubs/000095399/basedefs/stdint.h.html
     }
-  cuintptr_t = PtrUInt;
+  {$IFDEF FPC}
+    cuintptr_t = PtrUInt;
+  {$ELSE}
+    cuintptr_t = NativeUInt;
+  {$ENDIF}
   {$EXTERNALSYM cuintptr_t}
-  cintptr_t = PtrInt;
+  {$IFDEF FPC}
+    cintptr_t = PtrInt;
+  {$ELSE}
+    cintptr_t = NativeInt;
+  {$ENDIF}
   {$EXTERNALSYM cintptr_t}
 
   {$IFDEF WANT_CWCHAR_T}

@@ -5,10 +5,22 @@
 
 { Compiler settings }
 {$H+}              // strings are ansistrings (Delphi mode)
-{$PACKRECORDS C}   // C compatible record alignment
+{$IFDEF FPC}
+  {$PACKRECORDS C} // C compatible record alignment
+{$ELSE}
+  {$IFDEF WIN32}
+    {$ALIGN 4}
+  {$ELSE}
+    {$ALIGN 8}
+  {$ENDIF}
+{$ENDIF}
 
 { Compiler defines }
 {$DEFINE SDL} // define "SDL" symbol
+
+{$IF DEFINED(MSWINDOWS) AND NOT DEFINED(WINDOWS)}
+  {$DEFINE WINDOWS}
+{$ENDIF}
 
 { SDL3 Compiler defines }
 {$IFDEF WINDOWS}

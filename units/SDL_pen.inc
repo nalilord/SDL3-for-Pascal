@@ -45,14 +45,14 @@ const
    *
    * \since This macro is available since SDL 3.2.0.
    *}
-  SDL_PEN_MOUSEID = TSDL_MouseID(-2);
+  SDL_PEN_MOUSEID = TSDL_MouseID($FFFFFFFE);
 
   {*
    * The SDL_TouchID for touch events simulated with pen input.
    *
    * \since This macro is available since SDL 3.2.0.
    *}
-  SDL_PEN_TOUCHID = TSDL_TouchID(-2);
+  SDL_PEN_TOUCHID = TSDL_TouchID($FFFFFFFFFFFFFFFE);
 
 {*
  * Pen input flags, as reported by various pen events' `pen_state` field.
@@ -101,4 +101,3 @@ const
   SDL_PEN_AXIS_SLIDER  = TSDL_PenAxis(5);               {*< Pen finger wheel or slider (e.g., Airbrush Pen).  Unidirectional: 0 to 1.0  }
   SDL_PEN_AXIS_TANGENTIAL_PRESSURE  = TSDL_PenAxis(6);  {*< Pressure from squeezing the pen ("barrel pressure").  }
   SDL_PEN_AXIS_COUNT  = TSDL_PenAxis(7);                {*< Total known pen axis types in this version of SDL. This number may grow in future releases!  }
-

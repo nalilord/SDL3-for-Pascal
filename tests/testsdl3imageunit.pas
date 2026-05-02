@@ -19,7 +19,7 @@ var
   ImageSurface: PSDL_Surface = nil;
   ImageTexture: PSDL_Texture = nil;
 
-procedure RenderImage(file_:PChar);
+procedure RenderImage(file_: PAnsiChar);
 begin
   ImageSurface := IMG_Load(file_);
   ImageTexture := SDL_CreateTextureFromSurface(Renderer, ImageSurface);
@@ -55,4 +55,3 @@ begin
   SDL_Quit();
 
 end.
-

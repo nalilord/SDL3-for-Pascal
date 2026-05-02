@@ -19,18 +19,21 @@ var
   Points: array[0..499] of TSDL_FPoint;
   Rect: TSDL_FRect;
   I: Integer;
+  LogMessage: AnsiString;
 
 begin
   if not SDL_Init(SDL_INIT_VIDEO) then
   begin
 
-    SDL_Log(PChar(Format('Couldn''t initialize SDL: %s', [SDL_GetError])));
+    LogMessage := AnsiString(Format('Couldn''t initialize SDL: %s', [SDL_GetError]));
+    SDL_Log(PAnsiChar(LogMessage));
     Exit;
   end;
 
   if not SDL_CreateWindowAndRenderer('primitives', 640, 480, 0, @Window, @Renderer) then
   begin
-    SDL_Log(PChar(Format('Couldn''t create window/renderer: %s', [SDL_GetError])));
+    LogMessage := AnsiString(Format('Couldn''t create window/renderer: %s', [SDL_GetError]));
+    SDL_Log(PAnsiChar(LogMessage));
     Exit;
   end;
 
@@ -77,4 +80,3 @@ begin
 
   SDL_Quit();
 end.
-

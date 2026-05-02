@@ -9,6 +9,7 @@ using the [SDL3 library](https://libsdl.org).
 Simply add the units to your include path. You can achieve this by:
  - (FPC) using the `{$UNITPATH XXX}` directive in your source code;
  - (FPC) using the `-FuXXX` command-line argument to the compiler;
+ - (Delphi) adding the `units` directory to the project search path;
  - just copying & pasting the units into the same directory as your main source code.
 
 Use the `SDL3` unit for the main SDL3 library (should be always needed). Units for the other SDL3 libraries are (or will be) also provided:
@@ -17,6 +18,35 @@ Use the `SDL3` unit for the main SDL3 library (should be always needed). Units f
  - [`SDL3_mixer`](https://github.com/libsdl-org/SDL_mixer)
  - [`SDL3_net`](https://github.com/libsdl-org/SDL_net) (not published yet)
  - [`SDL3_gfx`](https://github.com/sabdul-khabir/SDL3_gfx)
+
+## Building
+
+The repository includes simple build scripts for WSL-based command-line builds.
+
+Build a Delphi Win64 target:
+
+```sh
+./build.sh examples/primitives.pas Win64
+```
+
+Build a Delphi Win32 target:
+
+```sh
+./build.sh tests/testver.pas Win32
+```
+
+The Delphi script auto-detects the newest installed Embarcadero Studio under
+`/mnt/c/Program Files (x86)/Embarcadero/Studio`. Override this with
+`BDS_VERSION`, `BDS_STUDIO_ROOT`, `DCC32`, or `DCC64` when needed. Add scoped
+unit namespaces with `DELPHI_NAMESPACES` when a project needs more than
+`System;Winapi`. Executables are written to `bin/Win32` or `bin/Win64`, next to
+the matching `SDL3.dll`.
+
+Build with FPC:
+
+```sh
+./build-fpc.sh tests/testver.pas
+```
 
 ## Documentation
 

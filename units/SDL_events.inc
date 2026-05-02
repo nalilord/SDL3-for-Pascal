@@ -1037,7 +1037,7 @@ type
                the next multiple of 16, 64, and on architectures where pointers are
                even larger the size of SDL_UserEvent will dominate as being 3 pointers.
              }
-        37: (padding: array[0..127] of cuint8);
+        38: (padding: array[0..127] of cuint8);
       end;
 
 { #todo : SDL3-for-Pascal: Translation of SDL_COMPILE_TIME_ASSERT necessary? Looks like an internal test function. }
